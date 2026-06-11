@@ -4,8 +4,11 @@ import li.gerard.worldchords.WorldChords;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FarmlandBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,6 +22,16 @@ public class ModBlocks {
     // Creates a new Block with the id "worldchords:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
     public static final DeferredBlock<Block> PUTRID_ORE_BLOCK = BLOCKS.registerSimpleBlock("putrid_ore_block", p -> p.mapColor(MapColor.STONE));
+
+    public static final DeferredBlock<FarmlandBlock> MURKY_GROUNDS = BLOCKS.registerBlock("murky_grounds", FarmlandBlock::new, p -> p
+            .mapColor(MapColor.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL)
+            .isViewBlocking((state, level, pos) -> true).isSuffocating((state, level, pos) -> true));
+
+    public static final DeferredBlock<MurkyPlantBlock> MURKY_PLANT = BLOCKS.registerBlock("murky_plant", MurkyPlantBlock::new, p -> p
+            .mapColor(MapColor.PLANT).noCollision().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY));
+
+    public static final DeferredBlock<SculkFlowerBlock> SCULK_FLOWER = BLOCKS.registerBlock("sculk_flower", SculkFlowerBlock::new, p -> p
+            .mapColor(MapColor.COLOR_CYAN).noCollision().instabreak().sound(SoundType.SCULK).pushReaction(PushReaction.DESTROY));
 
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);

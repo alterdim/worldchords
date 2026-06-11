@@ -28,6 +28,8 @@ public class ModItems {
     //Block items
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", ModBlocks.EXAMPLE_BLOCK);
     public static final DeferredItem<BlockItem> PUTRID_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("putrid_ore_block", ModBlocks.PUTRID_ORE_BLOCK);
+    public static final DeferredItem<BlockItem> MURKY_GROUNDS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("murky_grounds", ModBlocks.MURKY_GROUNDS);
+    public static final DeferredItem<BlockItem> SCULK_FLOWER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_flower", ModBlocks.SCULK_FLOWER);
 
     // Crafting mats
     public static final DeferredItem<Item> PUTRID_INGOT = ITEMS.registerSimpleItem("putrid_ingot");

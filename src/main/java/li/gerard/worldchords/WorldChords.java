@@ -39,13 +39,18 @@ public class WorldChords {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.worldchords")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> ModItems.EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> ModItems.MURKY_GEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ModItems.EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(ModItems.MURKY_GEM.get());
+                output.accept(ModItems.PUTRID_ORE_BLOCK_ITEM.get());
+                output.accept(ModItems.PUTRID_INGOT.get());
+                output.accept(ModItems.PUTRID_AXE.get());
+                output.accept(ModItems.PUTRID_HOE.get());
+                output.accept(ModItems.PUTRID_PICKAXE.get());
+                output.accept(ModItems.PUTRID_SHOVEL.get());
             }).build());
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
+
     public WorldChords(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

@@ -20,6 +20,7 @@ public class WorldChordsBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.PUTRID_ORE_BLOCK.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModBlocks.MURKY_GROUNDS.get());
         tag(BlockTags.SCULK_REPLACEABLE).add(GOLD_ORE);
 
     }
