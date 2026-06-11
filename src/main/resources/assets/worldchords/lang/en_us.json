@@ -1,0 +1,13 @@
+{
+  "itemGroup.worldchords": "Example Mod Tab",
+  "block.worldchords.example_block": "Example Block",
+  "item.worldchords.example_item": "Example Item",
+
+  "worldchords.configuration.title": "World Chords Configs",
+  "worldchords.configuration.section.worldchords.common.toml": "World Chords Configs",
+  "worldchords.configuration.section.worldchords.common.toml.title": "World Chords Configs",
+  "worldchords.configuration.items": "Item List",
+  "worldchords.configuration.logDirtBlock": "Log Dirt Block",
+  "worldchords.configuration.magicNumberIntroduction": "Magic Number Text",
+  "worldchords.configuration.magicNumber": "Magic Number"
+}
