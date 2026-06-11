@@ -15,6 +15,7 @@ public class WorldChordsDataGen {
     public static void gatherClientData(GatherDataEvent.Client event) {
         event.createProvider(WorldChordsModelProvider::new);
         event.createProvider(WorldChordsBlockTagProvider::new);
+        event.createProvider(WorldChordsItemTagProvider::new);
         event.createProvider(WorldChordsRecipeProvider.Runner::new);
 
     }

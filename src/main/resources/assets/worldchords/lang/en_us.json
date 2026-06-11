@@ -1,7 +1,14 @@
 {
   "itemGroup.worldchords": "Example Mod Tab",
   "block.worldchords.example_block": "Example Block",
+  "block.worldchords.putrid_ore_block": "Putrid Ore",
   "item.worldchords.example_item": "Example Item",
+  "item.worldchords.putrid_ingot": "Putrid Ingot",
+  "item.worldchords.murky_gem": "Murky Gem",
+  "item.worldchords.putrid_pickaxe": "Putrid Pickaxe",
+  "item.worldchords.putrid_axe": "Putrid Axe",
+  "item.worldchords.putrid_hoe": "Putrid Hoe",
+  "item.worldchords.putrid_shovel": "Putrid Shovel",
 
   "worldchords.configuration.title": "World Chords Configs",
   "worldchords.configuration.section.worldchords.common.toml": "World Chords Configs",
