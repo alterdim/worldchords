@@ -2,7 +2,9 @@
   "required": true,
   "package": "li.gerard.worldchords.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [],
+  "mixins": [
+    "SculkVeinBlockMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },

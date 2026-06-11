@@ -24,5 +24,6 @@ public class WorldChordsModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PUTRID_ORE_BLOCK.get());
 
         itemModels.generateFlatItem(ModItems.EXAMPLE_ITEM.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.PUTRID_INGOT.get(), ModelTemplates.FLAT_ITEM);
     }
 }

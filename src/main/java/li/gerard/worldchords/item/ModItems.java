@@ -18,6 +18,9 @@ public class ModItems {
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", ModBlocks.EXAMPLE_BLOCK);
     public static final DeferredItem<BlockItem> PUTRID_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("putrid_ore_block", ModBlocks.PUTRID_ORE_BLOCK);
 
+
+    public static final DeferredItem<Item> PUTRID_INGOT = ITEMS.registerSimpleItem("putrid_ingot");
+
     // Creates a new food item with the id "worldchords:example_id", nutrition 1 and saturation 2
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
