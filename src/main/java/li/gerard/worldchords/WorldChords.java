@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
 import li.gerard.worldchords.block.ModBlocks;
+import li.gerard.worldchords.block.entity.ModBlockEntities;
 import li.gerard.worldchords.item.ModItems;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -62,6 +63,8 @@ public class WorldChords {
         ModBlocks.register(modEventBus);
         // Register the Deferred Registers to the mod event bus so items get registered
         ModItems.register(modEventBus);
+        // Register the Deferred Registers to the mod event bus so block entity types get registered
+        ModBlockEntities.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
