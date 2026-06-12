@@ -20,10 +20,11 @@ public class WorldChordsBlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.SCULK_FLOWER.get());
         dropSelf(ModBlocks.SCULK_DEVOURER.get());
+        dropSelf(ModBlocks.HUNGER_UPGRADE.get());
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return List.of(ModBlocks.SCULK_FLOWER.get(), ModBlocks.SCULK_DEVOURER.get());
+        return List.of(ModBlocks.SCULK_FLOWER.get(), ModBlocks.SCULK_DEVOURER.get(), ModBlocks.HUNGER_UPGRADE.get());
     }
 }

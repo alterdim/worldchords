@@ -8,6 +8,9 @@ import com.lowdragmc.lowdraglib2.syncdata.storage.FieldManagedStorage;
 import li.gerard.worldchords.capability.SculkForceIO;
 import li.gerard.worldchords.capability.SculkForceStorage;
 import li.gerard.worldchords.capability.SideConfig;
+import li.gerard.worldchords.upgrade.HungerUpgradeBlock;
+import li.gerard.worldchords.upgrade.IUpgradableMachine;
+import li.gerard.worldchords.upgrade.UpgradeBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,8 +25,14 @@ import org.jspecify.annotations.Nullable;
  * config, and the sided capability handler. Subclasses define capacity and whether
  * enabled sides accept input or offer output via {@link #sculkForceIO()}
  */
-public abstract class SculkForceMachineBlockEntity extends BlockEntity implements ISyncPersistRPCBlockEntity {
+public abstract class SculkForceMachineBlockEntity extends BlockEntity implements ISyncPersistRPCBlockEntity, IUpgradableMachine {
+    /** How often the cached upgrade count is refreshed by {@link #getWorkRateUpgrades()}. */
+    public static final int UPGRADE_RECHECK_INTERVAL_TICKS = 40;
+
     private final FieldManagedStorage syncStorage = new FieldManagedStorage(this);
+
+    private int cachedHungerUpgrades;
+    private long nextUpgradeRecheckTime = Long.MIN_VALUE;
 
     @Persisted
     @DescSynced
@@ -68,9 +77,45 @@ public abstract class SculkForceMachineBlockEntity extends BlockEntity implement
         return sculkForceSides.isEnabled(side) ? sculkForce.sided(sculkForceIO()) : null;
     }
 
+    /**
+     * Connected hunger upgrades, cached for {@value UPGRADE_RECHECK_INTERVAL_TICKS}
+     * ticks so per-tick callers don't rescan the neighborhood.
+     */
+    public int getHungerUpgrades() {
+        if (level == null) {
+            return 0;
+        }
+        long now = level.getGameTime();
+        if (now >= nextUpgradeRecheckTime) {
+            nextUpgradeRecheckTime = now + UPGRADE_RECHECK_INTERVAL_TICKS;
+            cachedHungerUpgrades = countConnectedUpgrades(HungerUpgradeBlock.class);
+        }
+        return cachedHungerUpgrades;
+    }
+
+    /**
+     * Counts upgrades of the given type within this machine's upgrade range that are
+     * connected exclusively to this machine (contested upgrades count for nobody).
+     */
+    public int countConnectedUpgrades(Class<? extends UpgradeBlock> upgradeType) {
+        int range = getUpgradeRange();
+        if (range <= 0 || level == null || !level.isAreaLoaded(getBlockPos(), range)) {
+            return 0;
+        }
+        int count = 0;
+        for (BlockPos cursor : BlockPos.betweenClosed(
+                getBlockPos().offset(-range, -range, -range), getBlockPos().offset(range, range, range))) {
+            if (upgradeType.isInstance(level.getBlockState(cursor).getBlock())
+                    && UpgradeBlock.findConnectedMachine(level, cursor.immutable()) == this) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private void onSideConfigChanged() {
         setChanged();
-        // neighboring pipes/machines cache capability lookups; tell them to re-query
+        //tell stuff around that we changed
         if (level != null && !level.isClientSide()) {
             invalidateCapabilities();
         }

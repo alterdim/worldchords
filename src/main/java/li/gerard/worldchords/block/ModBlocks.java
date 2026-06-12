@@ -1,6 +1,7 @@
 package li.gerard.worldchords.block;
 
 import li.gerard.worldchords.WorldChords;
+import li.gerard.worldchords.upgrade.HungerUpgradeBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -27,6 +28,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<SculkDevourerBlock> SCULK_DEVOURER = BLOCKS.registerBlock("sculk_devourer", SculkDevourerBlock::new, p -> p
             .mapColor(MapColor.COLOR_CYAN).strength(3.0F).sound(SoundType.SCULK));
+
+    public static final DeferredBlock<HungerUpgradeBlock> HUNGER_UPGRADE = BLOCKS.registerBlock("hunger_upgrade", HungerUpgradeBlock::new, p -> p
+            .mapColor(MapColor.COLOR_CYAN).strength(2.0F).sound(SoundType.SCULK));
 
     public static final DeferredBlock<FarmlandBlock> MURKY_GROUNDS = BLOCKS.registerBlock("murky_grounds", FarmlandBlock::new, p -> p
             .mapColor(MapColor.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL)

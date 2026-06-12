@@ -27,6 +27,7 @@ public class WorldChordsModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.PUTRID_ORE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.SCULK_ALTAR_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.SCULK_DEVOURER.get());
+        blockModels.createTrivialCube(ModBlocks.HUNGER_UPGRADE.get());
 
         createMurkyGrounds(blockModels);
 

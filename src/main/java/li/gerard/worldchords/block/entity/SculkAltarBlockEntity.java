@@ -29,8 +29,13 @@ public class SculkAltarBlockEntity extends SculkForceMachineBlockEntity {
 
     @Override
     protected SculkForceIO sculkForceIO() {
-        // the altar consumes sculk force: enabled sides accept input, never output
         return SculkForceIO.INPUT;
+    }
+
+    @Override
+    public int getUpgradeRange() {
+        // the altar accepts no upgrades
+        return 0;
     }
 
     private ItemStacksResourceHandler createSlot() {

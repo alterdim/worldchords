@@ -53,6 +53,7 @@ public class WorldChords {
                 output.accept(ModItems.PUTRID_SWORD.get());
                 output.accept(ModItems.SCULK_ALTAR_BLOCK_ITEM.get());
                 output.accept(ModItems.SCULK_DEVOURER_BLOCK_ITEM.get());
+                output.accept(ModItems.HUNGER_UPGRADE_BLOCK_ITEM.get());
             }).build());
 
 

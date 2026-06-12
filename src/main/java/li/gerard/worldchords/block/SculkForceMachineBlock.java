@@ -5,6 +5,7 @@ import com.lowdragmc.lowdraglib2.gui.sync.bindings.impl.DataBindingBuilder;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.UI;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
+import com.lowdragmc.lowdraglib2.gui.ui.elements.BindableValue;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ProgressBar;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.inventory.InventorySlots;
@@ -27,10 +28,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 /**
  * Base class for sculk force machine blocks: opens the GUI on use and builds the shared
  * layout (title, machine-specific content, force bar, player inventory, and the corner
- * side-config submenu). Subclasses add their own content via {@link #addMachineContent}.
+ * side-config submenu). Subclasses add their own content via {@link #addMachineContent}
  */
 public abstract class SculkForceMachineBlock extends Block implements BlockUIMenuType.BlockUI, EntityBlock {
 
@@ -65,9 +68,11 @@ public abstract class SculkForceMachineBlock extends Block implements BlockUIMen
             bar.label.setText("Sculk Force");
             root.addChild(bar);
 
+            addUpgradeCountLine(root, "Hunger Upgrades", machine::getHungerUpgrades);
+
             var sideConfig = new SideConfigPanel("Sculk Force Sides", machine.getSculkForceSides());
             var cornerButtons = new UIElement();
-            cornerButtons.layout(l -> l.positionType(TaffyPosition.ABSOLUTE).bottom(2).right(2)
+            cornerButtons.layout(l -> l.positionType(TaffyPosition.ABSOLUTE).bottom(1).right(1)
                     .flexDirection(FlexDirection.ROW).gapAll(2));
             cornerButtons.addChild(sideConfig.createOpenButton("S"));
 
@@ -82,10 +87,28 @@ public abstract class SculkForceMachineBlock extends Block implements BlockUIMen
     }
 
     /**
-     * Machine-specific UI content, placed between the title and the force bar.
+     * Machine-specific UI content, placed between the title and the force bar
      */
     protected void addMachineContent(UIElement root, SculkForceMachineBlockEntity machine,
                                      BlockUIMenuType.BlockUIHolder holder) {}
+
+    /**
+     * Adds a "name: count" line that stays hidden while the count is zero
+     */
+    protected static void addUpgradeCountLine(UIElement root, String name, Supplier<Integer> counter) {
+        var label = new Label();
+        label.setDisplay(false);
+
+        var count = new BindableValue<Integer>();
+        count.bind(DataBindingBuilder.intValS2C(counter::get).build());
+        count.registerValueListener(value -> {
+            int upgrades = value == null ? 0 : value;
+            label.setText(name + ": " + upgrades, false);
+            label.setDisplay(upgrades > 0);
+        });
+
+        root.addChildren(label, count);
+    }
 
     @SuppressWarnings("unchecked")
     protected static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
