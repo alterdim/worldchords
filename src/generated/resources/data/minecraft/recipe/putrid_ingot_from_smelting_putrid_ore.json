@@ -1,10 +1,10 @@
 {
-  "type": "minecraft:blasting",
+  "type": "minecraft:smelting",
   "category": "blocks",
-  "cookingtime": 75,
+  "cookingtime": 150,
   "experience": 0.7,
   "group": "test",
-  "ingredient": "worldchords:putrid_ore_block",
+  "ingredient": "worldchords:putrid_ore",
   "result": {
     "id": "worldchords:putrid_ingot"
   }

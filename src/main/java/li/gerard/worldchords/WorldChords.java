@@ -42,12 +42,15 @@ public class WorldChords {
             .icon(() -> ModItems.MURKY_GEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ModItems.MURKY_GEM.get());
+                output.accept(ModItems.MURKY_THREAD.get());
                 output.accept(ModItems.PUTRID_ORE_BLOCK_ITEM.get());
                 output.accept(ModItems.PUTRID_INGOT.get());
                 output.accept(ModItems.PUTRID_AXE.get());
                 output.accept(ModItems.PUTRID_HOE.get());
                 output.accept(ModItems.PUTRID_PICKAXE.get());
                 output.accept(ModItems.PUTRID_SHOVEL.get());
+                output.accept(ModItems.PUTRID_SWORD.get());
+                output.accept(ModItems.SCULK_ALTAR_BLOCK_ITEM.get());
             }).build());
 
 

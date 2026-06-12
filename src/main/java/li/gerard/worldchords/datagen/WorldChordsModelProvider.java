@@ -25,17 +25,24 @@ public class WorldChordsModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         blockModels.createTrivialCube(ModBlocks.EXAMPLE_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.PUTRID_ORE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.SCULK_ALTAR_BLOCK.get());
+
         createMurkyGrounds(blockModels);
+
+
         blockModels.createCrossBlock(ModBlocks.MURKY_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.SCULK_FLOWER.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
 
         itemModels.generateFlatItem(ModItems.EXAMPLE_ITEM.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PUTRID_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.MURKY_GEM.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.MURKY_THREAD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PUTRID_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.PUTRID_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.PUTRID_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.PUTRID_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.PUTRID_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 
     private static void createMurkyGrounds(BlockModelGenerators blockModels) {

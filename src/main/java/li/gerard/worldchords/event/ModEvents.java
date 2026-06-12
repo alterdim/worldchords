@@ -17,6 +17,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.Tags;
+import net.minecraft.world.entity.monster.spider.Spider;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -29,6 +31,19 @@ public class ModEvents {
             for (var itemEntity : event.getDrops()) {
                 ItemStack stack = itemEntity.getItem();
                 itemEntity.setItem(new ItemStack(ModItems.MURKY_GEM.get(), stack.getCount()));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDrops(LivingDropsEvent event) {
+        ItemStack weapon = event.getSource().getWeaponItem();
+        if (event.getEntity() instanceof Spider && weapon != null && weapon.is(ModItems.PUTRID_SWORD.get())) {
+            for (var itemEntity : event.getDrops()) {
+                ItemStack stack = itemEntity.getItem();
+                if (stack.is(Items.STRING)) {
+                    itemEntity.setItem(new ItemStack(ModItems.MURKY_THREAD.get(), stack.getCount()));
+                }
             }
         }
     }

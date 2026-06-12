@@ -27,19 +27,22 @@ public class ModItems {
 
     //Block items
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", ModBlocks.EXAMPLE_BLOCK);
-    public static final DeferredItem<BlockItem> PUTRID_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("putrid_ore_block", ModBlocks.PUTRID_ORE_BLOCK);
+    public static final DeferredItem<BlockItem> PUTRID_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("putrid_ore", ModBlocks.PUTRID_ORE_BLOCK);
     public static final DeferredItem<BlockItem> MURKY_GROUNDS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("murky_grounds", ModBlocks.MURKY_GROUNDS);
     public static final DeferredItem<BlockItem> SCULK_FLOWER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_flower", ModBlocks.SCULK_FLOWER);
+    public static final DeferredItem<BlockItem> SCULK_ALTAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_altar", ModBlocks.SCULK_ALTAR_BLOCK);
 
     // Crafting mats
     public static final DeferredItem<Item> PUTRID_INGOT = ITEMS.registerSimpleItem("putrid_ingot");
     public static final DeferredItem<Item> MURKY_GEM = ITEMS.registerSimpleItem("murky_gem");
+    public static final DeferredItem<Item> MURKY_THREAD = ITEMS.registerSimpleItem("murky_thread");
 
     // Tools
     public static final DeferredItem<Item> PUTRID_PICKAXE = ITEMS.registerItem("putrid_pickaxe", Item::new, p -> p.pickaxe(PUTRID_MATERIAL, 1.0F, -2.8F));
     public static final DeferredItem<AxeItem> PUTRID_AXE = ITEMS.registerItem("putrid_axe", p -> new AxeItem(PUTRID_MATERIAL, 6.0F, -3.0F, p));
     public static final DeferredItem<HoeItem> PUTRID_HOE = ITEMS.registerItem("putrid_hoe", p -> new HoeItem(PUTRID_MATERIAL, 0.0F, -3.0F, p));
     public static final DeferredItem<ShovelItem> PUTRID_SHOVEL = ITEMS.registerItem("putrid_shovel", p -> new ShovelItem(PUTRID_MATERIAL, 1.5F, -3.0F, p));
+    public static final DeferredItem<Item> PUTRID_SWORD = ITEMS.registerItem("putrid_sword", Item::new, p -> p.sword(PUTRID_MATERIAL, 3.0F, -2.4F));
 
     public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", p -> p.food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
