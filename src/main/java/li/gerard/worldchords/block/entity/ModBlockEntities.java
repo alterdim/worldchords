@@ -18,6 +18,9 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SculkAltarBlockEntity>> SCULK_ALTAR = BLOCK_ENTITIES.register("sculk_altar",
             () -> new BlockEntityType<>(SculkAltarBlockEntity::new, Set.of(ModBlocks.SCULK_ALTAR_BLOCK.get())));
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SculkDevourerBlockEntity>> SCULK_DEVOURER = BLOCK_ENTITIES.register("sculk_devourer",
+            () -> new BlockEntityType<>(SculkDevourerBlockEntity::new, Set.of(ModBlocks.SCULK_DEVOURER.get())));
+
     public static void register(IEventBus modEventBus) {
         BLOCK_ENTITIES.register(modEventBus);
     }

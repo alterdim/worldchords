@@ -2,7 +2,7 @@ package li.gerard.worldchords.capability;
 
 import li.gerard.worldchords.WorldChords;
 import li.gerard.worldchords.block.entity.ModBlockEntities;
-import li.gerard.worldchords.block.entity.SculkAltarBlockEntity;
+import li.gerard.worldchords.block.entity.SculkForceMachineBlockEntity;
 
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
@@ -28,6 +28,8 @@ public final class ModCapabilities {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(SculkForce.BLOCK, ModBlockEntities.SCULK_ALTAR.get(),
-                SculkAltarBlockEntity::getSculkForceHandler);
+                SculkForceMachineBlockEntity::getSculkForceHandler);
+        event.registerBlockEntity(SculkForce.BLOCK, ModBlockEntities.SCULK_DEVOURER.get(),
+                SculkForceMachineBlockEntity::getSculkForceHandler);
     }
 }

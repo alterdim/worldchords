@@ -31,6 +31,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> MURKY_GROUNDS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("murky_grounds", ModBlocks.MURKY_GROUNDS);
     public static final DeferredItem<BlockItem> SCULK_FLOWER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_flower", ModBlocks.SCULK_FLOWER);
     public static final DeferredItem<BlockItem> SCULK_ALTAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_altar", ModBlocks.SCULK_ALTAR_BLOCK);
+    public static final DeferredItem<BlockItem> SCULK_DEVOURER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_devourer", ModBlocks.SCULK_DEVOURER);
 
     // Crafting mats
     public static final DeferredItem<Item> PUTRID_INGOT = ITEMS.registerSimpleItem("putrid_ingot");

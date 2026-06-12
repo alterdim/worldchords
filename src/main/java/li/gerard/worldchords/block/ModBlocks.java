@@ -25,6 +25,9 @@ public class ModBlocks {
     public static final DeferredBlock<SculkAltarBlock> SCULK_ALTAR_BLOCK = BLOCKS.registerBlock("sculk_altar", SculkAltarBlock::new, p -> p
             .mapColor(MapColor.COLOR_CYAN).noCollision().instabreak().sound(SoundType.SCULK).pushReaction(PushReaction.IGNORE));
 
+    public static final DeferredBlock<SculkDevourerBlock> SCULK_DEVOURER = BLOCKS.registerBlock("sculk_devourer", SculkDevourerBlock::new, p -> p
+            .mapColor(MapColor.COLOR_CYAN).strength(3.0F).sound(SoundType.SCULK));
+
     public static final DeferredBlock<FarmlandBlock> MURKY_GROUNDS = BLOCKS.registerBlock("murky_grounds", FarmlandBlock::new, p -> p
             .mapColor(MapColor.DIRT).randomTicks().strength(0.6F).sound(SoundType.GRAVEL)
             .isViewBlocking((state, level, pos) -> true).isSuffocating((state, level, pos) -> true));
