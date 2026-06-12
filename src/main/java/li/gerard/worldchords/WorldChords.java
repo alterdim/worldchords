@@ -8,6 +8,7 @@ import li.gerard.worldchords.block.ModBlocks;
 import li.gerard.worldchords.block.entity.ModBlockEntities;
 import li.gerard.worldchords.item.CraftingTools;
 import li.gerard.worldchords.item.ModItems;
+import li.gerard.worldchords.recipe.ModRecipes;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -69,6 +70,8 @@ public class WorldChords {
         ModItems.register(modEventBus);
         // Register the Deferred Registers to the mod event bus so block entity types get registered
         ModBlockEntities.register(modEventBus);
+        // Register the Deferred Registers to the mod event bus so recipe types and serializers get registered
+        ModRecipes.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 

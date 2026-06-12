@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "worldchords:sculk_flower",
+    [
+      "worldchords:sculk_needle",
+      "worldchords:deep_needle",
+      "worldchords:zenithian_needle"
+    ]
+  ],
+  "result": {
+    "count": 2,
+    "id": "worldchords:murky_thread"
+  }
+}

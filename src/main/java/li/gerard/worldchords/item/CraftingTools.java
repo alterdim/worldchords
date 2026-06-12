@@ -52,6 +52,14 @@ public final class CraftingTools {
         return TOOLS.values().stream().flatMap(byType -> byType.values().stream()).toList();
     }
 
+    /** All tools of the given type whose crafting level is at least {@code level}, in declaration order. */
+    public static List<DeferredItem<CraftingToolItem>> withLevelAtLeast(CraftingToolType type, int level) {
+        return MATERIALS.stream()
+                .filter(material -> material.craftingLevel() >= level)
+                .map(material -> get(material, type))
+                .toList();
+    }
+
     /** Forces class load so the static registrations run before the registry event. */
     public static void register() {}
 }

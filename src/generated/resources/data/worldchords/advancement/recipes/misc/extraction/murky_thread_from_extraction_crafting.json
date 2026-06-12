@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sculk_flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "worldchords:sculk_flower"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "worldchords:extraction/murky_thread_from_extraction_crafting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sculk_flower"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "worldchords:extraction/murky_thread_from_extraction_crafting"
+    ]
+  }
+}
