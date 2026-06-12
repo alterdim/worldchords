@@ -5,7 +5,9 @@ import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ItemSlot;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import li.gerard.worldchords.block.entity.SculkAltarBlockEntity;
-import li.gerard.worldchords.block.entity.SculkForceMachineBlockEntity;
+import li.gerard.worldchords.block.entity.generic.SculkForceMachineBlockEntity;
+import li.gerard.worldchords.block.generic.SculkForceMachineBlock;
+import li.gerard.worldchords.tier.Tier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,7 +16,7 @@ import org.jspecify.annotations.Nullable;
 public class SculkAltarBlock extends SculkForceMachineBlock {
 
     public SculkAltarBlock(Properties properties) {
-        super(properties);
+        super(Tier.MURKY, properties);
     }
 
     @Override

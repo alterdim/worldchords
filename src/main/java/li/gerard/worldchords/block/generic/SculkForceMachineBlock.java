@@ -1,4 +1,4 @@
-package li.gerard.worldchords.block;
+package li.gerard.worldchords.block.generic;
 
 import com.lowdragmc.lowdraglib2.gui.factory.BlockUIMenuType;
 import com.lowdragmc.lowdraglib2.gui.sync.bindings.impl.DataBindingBuilder;
@@ -12,8 +12,10 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.inventory.InventorySlots;
 import com.lowdragmc.lowdraglib2.gui.ui.style.StylesheetManager;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
-import li.gerard.worldchords.block.entity.SculkForceMachineBlockEntity;
+import li.gerard.worldchords.block.entity.generic.SculkForceMachineBlockEntity;
 import li.gerard.worldchords.gui.SideConfigPanel;
+import li.gerard.worldchords.tier.Tier;
+import li.gerard.worldchords.tier.Tiered;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
@@ -35,10 +37,18 @@ import java.util.function.Supplier;
  * layout (title, machine-specific content, force bar, player inventory, and the corner
  * side-config submenu). Subclasses add their own content via {@link #addMachineContent}
  */
-public abstract class SculkForceMachineBlock extends Block implements BlockUIMenuType.BlockUI, EntityBlock {
+public abstract class SculkForceMachineBlock extends Block implements BlockUIMenuType.BlockUI, EntityBlock, Tiered {
 
-    protected SculkForceMachineBlock(Properties properties) {
+    private final Tier tier;
+
+    protected SculkForceMachineBlock(Tier tier, Properties properties) {
         super(properties);
+        this.tier = tier;
+    }
+
+    @Override
+    public Tier getTier() {
+        return tier;
     }
 
     @Override
@@ -54,7 +64,7 @@ public abstract class SculkForceMachineBlock extends Block implements BlockUIMen
     public ModularUI createUI(BlockUIMenuType.BlockUIHolder holder) {
         var root = new UIElement();
         root.addClass("panel_bg");
-        root.addChild(new Label().setText(getName()));
+        root.addChild(new Label().setText(getName().withStyle(s -> s.withColor(tier.color()))));
 
         if (holder.player.level().getBlockEntity(holder.pos) instanceof SculkForceMachineBlockEntity machine) {
             addMachineContent(root, machine, holder);

@@ -50,6 +50,8 @@ public class ModItems {
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
     public static void register(IEventBus modEventBus) {
+        // force-loads CraftingTools so its static registrations land in ITEMS first
+        CraftingTools.register();
         ITEMS.register(modEventBus);
     }
 }

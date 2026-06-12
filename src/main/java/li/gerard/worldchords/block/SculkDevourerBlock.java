@@ -2,6 +2,8 @@ package li.gerard.worldchords.block;
 
 import li.gerard.worldchords.block.entity.ModBlockEntities;
 import li.gerard.worldchords.block.entity.SculkDevourerBlockEntity;
+import li.gerard.worldchords.block.generic.SculkForceMachineBlock;
+import li.gerard.worldchords.tier.Tier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,7 +15,7 @@ import org.jspecify.annotations.Nullable;
 public class SculkDevourerBlock extends SculkForceMachineBlock {
 
     public SculkDevourerBlock(Properties properties) {
-        super(properties);
+        super(Tier.SCULK, properties);
     }
 
     @Override

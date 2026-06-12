@@ -1,5 +1,6 @@
 package li.gerard.worldchords.block.entity;
 
+import li.gerard.worldchords.block.entity.generic.SculkForceMachineBlockEntity;
 import li.gerard.worldchords.capability.SculkForceIO;
 
 import net.minecraft.core.BlockPos;
@@ -11,15 +12,13 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SculkDevourerBlockEntity extends SculkForceMachineBlockEntity {
     public static final int SCULK_FORCE_CAPACITY = 10000;
-    public static final int SCULK_FORCE_MAX_TRANSFER = 256;
     public static final int RANGE = 2;
     public static final int UPGRADE_RANGE = 1;
     public static final int FORCE_PER_SCULK = 10;
     private static final int DEVOUR_INTERVAL_TICKS = 200;
 
     public SculkDevourerBlockEntity(BlockPos worldPosition, BlockState blockState) {
-        super(ModBlockEntities.SCULK_DEVOURER.get(), worldPosition, blockState,
-                SCULK_FORCE_CAPACITY, SCULK_FORCE_MAX_TRANSFER);
+        super(ModBlockEntities.SCULK_DEVOURER.get(), worldPosition, blockState, SCULK_FORCE_CAPACITY);
     }
 
     @Override

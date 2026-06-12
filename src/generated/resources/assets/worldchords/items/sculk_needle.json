@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "worldchords:item/needle",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13904184
+      }
+    ]
+  }
+}

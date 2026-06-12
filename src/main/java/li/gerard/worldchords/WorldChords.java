@@ -6,6 +6,7 @@ import com.mojang.logging.LogUtils;
 
 import li.gerard.worldchords.block.ModBlocks;
 import li.gerard.worldchords.block.entity.ModBlockEntities;
+import li.gerard.worldchords.item.CraftingTools;
 import li.gerard.worldchords.item.ModItems;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -54,6 +55,7 @@ public class WorldChords {
                 output.accept(ModItems.SCULK_ALTAR_BLOCK_ITEM.get());
                 output.accept(ModItems.SCULK_DEVOURER_BLOCK_ITEM.get());
                 output.accept(ModItems.HUNGER_UPGRADE_BLOCK_ITEM.get());
+                CraftingTools.all().forEach(tool -> output.accept(tool.get()));
             }).build());
 
 

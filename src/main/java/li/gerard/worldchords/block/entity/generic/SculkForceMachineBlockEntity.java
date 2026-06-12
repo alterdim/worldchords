@@ -1,4 +1,4 @@
-package li.gerard.worldchords.block.entity;
+package li.gerard.worldchords.block.entity.generic;
 
 import com.lowdragmc.lowdraglib2.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib2.syncdata.annotation.Persisted;
@@ -8,6 +8,8 @@ import com.lowdragmc.lowdraglib2.syncdata.storage.FieldManagedStorage;
 import li.gerard.worldchords.capability.SculkForceIO;
 import li.gerard.worldchords.capability.SculkForceStorage;
 import li.gerard.worldchords.capability.SideConfig;
+import li.gerard.worldchords.tier.Tier;
+import li.gerard.worldchords.tier.Tiered;
 import li.gerard.worldchords.upgrade.HungerUpgradeBlock;
 import li.gerard.worldchords.upgrade.IUpgradableMachine;
 import li.gerard.worldchords.upgrade.UpgradeBlock;
@@ -23,10 +25,11 @@ import org.jspecify.annotations.Nullable;
 /**
  * Base class for machines with a sculk force buffer, owns the storage, the per-side
  * config, and the sided capability handler. Subclasses define capacity and whether
- * enabled sides accept input or offer output via {@link #sculkForceIO()}
+ * enabled sides accept input or offer output via {@link #sculkForceIO()}. The max
+ * transfer per tick comes from the block's {@link Tier}.
  */
 public abstract class SculkForceMachineBlockEntity extends BlockEntity implements ISyncPersistRPCBlockEntity, IUpgradableMachine {
-    /** How often the cached upgrade count is refreshed by {@link #getWorkRateUpgrades()}. */
+    /** How often the cached upgrade count is refreshed by {@link #getHungerUpgrades()}. */
     public static final int UPGRADE_RECHECK_INTERVAL_TICKS = 40;
 
     private final FieldManagedStorage syncStorage = new FieldManagedStorage(this);
@@ -43,9 +46,15 @@ public abstract class SculkForceMachineBlockEntity extends BlockEntity implement
     private final SideConfig sculkForceSides = new SideConfig(true).setOnChanged(this::onSideConfigChanged);
 
     protected SculkForceMachineBlockEntity(BlockEntityType<?> type, BlockPos worldPosition, BlockState blockState,
-                                           int forceCapacity, int forceMaxTransfer) {
+                                           int forceCapacity) {
         super(type, worldPosition, blockState);
-        this.sculkForce = new SculkForceStorage(forceCapacity, forceMaxTransfer).setOnChanged(this::setChanged);
+        Tier tier = blockState.getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.MURKY;
+        this.sculkForce = new SculkForceStorage(forceCapacity, tier.sfTransfer()).setOnChanged(this::setChanged);
+    }
+
+    /** The machine's tier, taken from its block. */
+    public Tier getTier() {
+        return getBlockState().getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.MURKY;
     }
 
     /**
