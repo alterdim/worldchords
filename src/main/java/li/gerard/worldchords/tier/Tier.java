@@ -5,34 +5,27 @@ import net.minecraft.network.chat.MutableComponent;
 
 /**
  * Machine and item tiers. Each tier fixes how much RF and Sculk Force can flow in or
- * out per tick, and carries a color used everywhere the tier is shown (tooltips, GUI
- * titles). Adding a tier is one line here plus a {@code worldchords.tier.<id>} lang entry.
+ * out per tick. Colors belong to materials ({@code CraftingToolMaterial}), not tiers.
+ * Adding a tier is one line here plus a {@code worldchords.tier.<id>} lang entry.
  */
 public enum Tier {
-    MURKY("murky", 0x8AA45B, 64, 32),
-    SCULK("sculk", 0x2BD6C8, 256, 128),
-    DEEP("deep", 0x5C7CFF, 1024, 512),
-    ZENITHIAN("zenithian", 0xFFD24D, 4096, 2048);
+    TIER_1("tier_1", 64, 32),
+    TIER_2("tier_2", 256, 128),
+    TIER_3("tier_3", 1024, 512),
+    TIER_4("tier_4", 4096, 2048);
 
     private final String id;
-    private final int color;
     private final int rfTransfer;
     private final int sfTransfer;
 
-    Tier(String id, int color, int rfTransfer, int sfTransfer) {
+    Tier(String id, int rfTransfer, int sfTransfer) {
         this.id = id;
-        this.color = color;
         this.rfTransfer = rfTransfer;
         this.sfTransfer = sfTransfer;
     }
 
     public String id() {
         return id;
-    }
-
-    /** RGB color used to render this tier's name and values. */
-    public int color() {
-        return color;
     }
 
     /** Max RF per tick a machine of this tier can input or output. */
@@ -45,8 +38,8 @@ public enum Tier {
         return sfTransfer;
     }
 
-    /** The tier's name, already colored. */
+    /** The tier's name, uncolored; callers may style it with a material color. */
     public MutableComponent displayName() {
-        return Component.translatable("worldchords.tier." + id).withStyle(s -> s.withColor(color));
+        return Component.translatable("worldchords.tier." + id);
     }
 }

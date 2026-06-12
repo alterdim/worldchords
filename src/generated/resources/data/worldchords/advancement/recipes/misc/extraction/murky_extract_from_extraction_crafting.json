@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "worldchords:extraction/murky_thread_from_extraction_crafting"
+        "recipe": "worldchords:extraction/murky_extract_from_extraction_crafting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "worldchords:extraction/murky_thread_from_extraction_crafting"
+      "worldchords:extraction/murky_extract_from_extraction_crafting"
     ]
   }
 }

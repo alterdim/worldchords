@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "worldchords:block/putrid_ore"
+    "all": "worldchords:block/murky_ore"
   }
 }

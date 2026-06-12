@@ -48,13 +48,13 @@ public abstract class SculkForceMachineBlockEntity extends BlockEntity implement
     protected SculkForceMachineBlockEntity(BlockEntityType<?> type, BlockPos worldPosition, BlockState blockState,
                                            int forceCapacity) {
         super(type, worldPosition, blockState);
-        Tier tier = blockState.getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.MURKY;
+        Tier tier = blockState.getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.TIER_1;
         this.sculkForce = new SculkForceStorage(forceCapacity, tier.sfTransfer()).setOnChanged(this::setChanged);
     }
 
     /** The machine's tier, taken from its block. */
     public Tier getTier() {
-        return getBlockState().getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.MURKY;
+        return getBlockState().getBlock() instanceof Tiered tiered ? tiered.getTier() : Tier.TIER_1;
     }
 
     /**

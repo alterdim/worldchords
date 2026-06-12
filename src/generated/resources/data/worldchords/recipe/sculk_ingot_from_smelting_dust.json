@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "sculk_ingot",
+  "ingredient": "worldchords:sculk_dust",
+  "result": {
+    "id": "worldchords:sculk_ingot"
+  }
+}

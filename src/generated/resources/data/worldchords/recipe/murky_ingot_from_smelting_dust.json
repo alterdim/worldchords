@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "murky_ingot",
+  "ingredient": "worldchords:murky_dust",
+  "result": {
+    "id": "worldchords:murky_ingot"
+  }
+}

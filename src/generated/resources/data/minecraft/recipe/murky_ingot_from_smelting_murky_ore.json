@@ -3,9 +3,9 @@
   "category": "blocks",
   "cookingtime": 150,
   "experience": 0.7,
-  "group": "test",
-  "ingredient": "worldchords:putrid_ore",
+  "group": "murky_ingot",
+  "ingredient": "worldchords:murky_ore",
   "result": {
-    "id": "worldchords:putrid_ingot"
+    "id": "worldchords:murky_ingot"
   }
 }

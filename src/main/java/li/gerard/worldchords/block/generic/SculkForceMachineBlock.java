@@ -64,7 +64,7 @@ public abstract class SculkForceMachineBlock extends Block implements BlockUIMen
     public ModularUI createUI(BlockUIMenuType.BlockUIHolder holder) {
         var root = new UIElement();
         root.addClass("panel_bg");
-        root.addChild(new Label().setText(getName().withStyle(s -> s.withColor(tier.color()))));
+        root.addChild(new Label().setText(getName()));
 
         if (holder.player.level().getBlockEntity(holder.pos) instanceof SculkForceMachineBlockEntity machine) {
             addMachineContent(root, machine, holder);

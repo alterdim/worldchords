@@ -7,6 +7,7 @@ import com.mojang.logging.LogUtils;
 import li.gerard.worldchords.block.ModBlocks;
 import li.gerard.worldchords.block.entity.ModBlockEntities;
 import li.gerard.worldchords.item.CraftingTools;
+import li.gerard.worldchords.item.MaterialItems;
 import li.gerard.worldchords.item.ModItems;
 import li.gerard.worldchords.recipe.ModRecipes;
 
@@ -46,8 +47,7 @@ public class WorldChords {
             .displayItems((parameters, output) -> {
                 output.accept(ModItems.MURKY_GEM.get());
                 output.accept(ModItems.MURKY_THREAD.get());
-                output.accept(ModItems.PUTRID_ORE_BLOCK_ITEM.get());
-                output.accept(ModItems.PUTRID_INGOT.get());
+                output.accept(ModItems.MURKY_ORE_BLOCK_ITEM.get());
                 output.accept(ModItems.PUTRID_AXE.get());
                 output.accept(ModItems.PUTRID_HOE.get());
                 output.accept(ModItems.PUTRID_PICKAXE.get());
@@ -57,6 +57,7 @@ public class WorldChords {
                 output.accept(ModItems.SCULK_DEVOURER_BLOCK_ITEM.get());
                 output.accept(ModItems.HUNGER_UPGRADE_BLOCK_ITEM.get());
                 CraftingTools.all().forEach(tool -> output.accept(tool.get()));
+                MaterialItems.all().forEach(item -> output.accept(item.get()));
             }).build());
 
 

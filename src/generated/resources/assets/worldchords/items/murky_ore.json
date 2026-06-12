@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "worldchords:item/putrid_ingot"
+    "model": "worldchords:block/murky_ore"
   }
 }

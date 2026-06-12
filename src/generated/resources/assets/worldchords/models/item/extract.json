@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "worldchords:item/extract_base",
+    "layer1": "worldchords:item/extract_overlay"
+  }
+}

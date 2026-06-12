@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_putrid_ore": {
+    "has_sculk_dust": {
       "conditions": {
         "items": [
           {
-            "items": "worldchords:putrid_ore"
+            "items": "worldchords:sculk_dust"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:putrid_ingot_from_smelting_putrid_ore"
+        "recipe": "worldchords:sculk_ingot_from_smelting_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_putrid_ore"
+      "has_sculk_dust"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:putrid_ingot_from_smelting_putrid_ore"
+      "worldchords:sculk_ingot_from_smelting_dust"
     ]
   }
 }

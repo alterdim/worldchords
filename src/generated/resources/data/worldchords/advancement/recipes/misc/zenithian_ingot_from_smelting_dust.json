@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "worldchords:zenithian_ingot_from_smelting_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zenithian_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": "worldchords:zenithian_dust"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zenithian_dust"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "worldchords:zenithian_ingot_from_smelting_dust"
+    ]
+  }
+}

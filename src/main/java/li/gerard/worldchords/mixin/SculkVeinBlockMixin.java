@@ -21,9 +21,9 @@ public class SculkVeinBlockMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/level/LevelAccessor;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z"))
-    private boolean worldchords$replaceGoldOreWithPutridOre(LevelAccessor level, BlockPos pos, BlockState newState, int flags, Operation<Boolean> original) {
+    private boolean worldchords$replaceGoldOreWithMurkyOre(LevelAccessor level, BlockPos pos, BlockState newState, int flags, Operation<Boolean> original) {
         if (level.getBlockState(pos).is(Blocks.GOLD_ORE)) {
-            newState = ModBlocks.PUTRID_ORE_BLOCK.get().defaultBlockState();
+            newState = ModBlocks.MURKY_ORE_BLOCK.get().defaultBlockState();
         }
         return original.call(level, pos, newState, flags);
     }

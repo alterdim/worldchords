@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_murky_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "worldchords:murky_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:murky_ingot_from_smelting_murky_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_murky_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:murky_ingot_from_smelting_murky_ore"
+    ]
+  }
+}

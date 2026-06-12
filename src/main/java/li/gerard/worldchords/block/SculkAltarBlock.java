@@ -16,7 +16,7 @@ import org.jspecify.annotations.Nullable;
 public class SculkAltarBlock extends SculkForceMachineBlock {
 
     public SculkAltarBlock(Properties properties) {
-        super(Tier.MURKY, properties);
+        super(Tier.TIER_1, properties);
     }
 
     @Override

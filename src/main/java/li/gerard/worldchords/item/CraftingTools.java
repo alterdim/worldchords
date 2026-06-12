@@ -19,10 +19,11 @@ import java.util.Map;
 public final class CraftingTools {
 
     public static final List<CraftingToolMaterial> MATERIALS = List.of(
-            new CraftingToolMaterial("murky", Tier.MURKY, 64, 1),
-            new CraftingToolMaterial("sculk", Tier.SCULK, 256, 2),
-            new CraftingToolMaterial("deep", Tier.DEEP, 1024, 3),
-            new CraftingToolMaterial("zenithian", Tier.ZENITHIAN, 4096, 4));
+            new CraftingToolMaterial("murky", Tier.TIER_1, 0x40875A, 16, 1),
+            new CraftingToolMaterial("berserkium", Tier.TIER_1, 0xC92241, 8, 1),
+            new CraftingToolMaterial("sculk", Tier.TIER_2, 0x2BD6C8, 32, 2),
+            new CraftingToolMaterial("deep", Tier.TIER_3, 0x5C7CFF, 64, 3),
+            new CraftingToolMaterial("zenithian", Tier.TIER_4, 0xFFD24D, 128, 4));
 
     /** material name -> tool type -> registered item, in declaration order. */
     private static final Map<String, Map<CraftingToolType, DeferredItem<CraftingToolItem>>> TOOLS;

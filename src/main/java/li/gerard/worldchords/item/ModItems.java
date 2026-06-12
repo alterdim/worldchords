@@ -27,7 +27,7 @@ public class ModItems {
 
     //Block items
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", ModBlocks.EXAMPLE_BLOCK);
-    public static final DeferredItem<BlockItem> PUTRID_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("putrid_ore", ModBlocks.PUTRID_ORE_BLOCK);
+    public static final DeferredItem<BlockItem> MURKY_ORE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("murky_ore", ModBlocks.MURKY_ORE_BLOCK);
     public static final DeferredItem<BlockItem> MURKY_GROUNDS_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("murky_grounds", ModBlocks.MURKY_GROUNDS);
     public static final DeferredItem<BlockItem> SCULK_FLOWER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_flower", ModBlocks.SCULK_FLOWER);
     public static final DeferredItem<BlockItem> SCULK_ALTAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("sculk_altar", ModBlocks.SCULK_ALTAR_BLOCK);
@@ -35,7 +35,6 @@ public class ModItems {
     public static final DeferredItem<BlockItem> HUNGER_UPGRADE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("hunger_upgrade", ModBlocks.HUNGER_UPGRADE);
 
     // Crafting mats
-    public static final DeferredItem<Item> PUTRID_INGOT = ITEMS.registerSimpleItem("putrid_ingot");
     public static final DeferredItem<Item> MURKY_GEM = ITEMS.registerSimpleItem("murky_gem");
     public static final DeferredItem<Item> MURKY_THREAD = ITEMS.registerSimpleItem("murky_thread");
 
@@ -50,8 +49,9 @@ public class ModItems {
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
     public static void register(IEventBus modEventBus) {
-        // force-loads CraftingTools so its static registrations land in ITEMS first
+        // force-loads these so their static registrations land in ITEMS first
         CraftingTools.register();
+        MaterialItems.register();
         ITEMS.register(modEventBus);
     }
 }

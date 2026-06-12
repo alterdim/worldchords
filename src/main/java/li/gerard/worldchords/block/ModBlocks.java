@@ -22,7 +22,7 @@ public class ModBlocks {
 
     // Creates a new Block with the id "worldchords:example_block", combining the namespace and path
     public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerSimpleBlock("example_block", p -> p.mapColor(MapColor.STONE));
-    public static final DeferredBlock<Block> PUTRID_ORE_BLOCK = BLOCKS.registerSimpleBlock("putrid_ore", p -> p.mapColor(MapColor.STONE));
+    public static final DeferredBlock<Block> MURKY_ORE_BLOCK = BLOCKS.registerSimpleBlock("murky_ore", p -> p.mapColor(MapColor.STONE));
     public static final DeferredBlock<SculkAltarBlock> SCULK_ALTAR_BLOCK = BLOCKS.registerBlock("sculk_altar", SculkAltarBlock::new, p -> p
             .mapColor(MapColor.COLOR_CYAN).noCollision().instabreak().sound(SoundType.SCULK).pushReaction(PushReaction.IGNORE));
 

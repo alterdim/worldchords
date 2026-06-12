@@ -2,9 +2,7 @@ package li.gerard.worldchords.datagen;
 
 import li.gerard.worldchords.WorldChords;
 import li.gerard.worldchords.block.ModBlocks;
-import li.gerard.worldchords.item.CraftingToolType;
-import li.gerard.worldchords.item.CraftingTools;
-import li.gerard.worldchords.item.ModItems;
+import li.gerard.worldchords.item.*;
 import li.gerard.worldchords.recipe.ExtractionRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -12,6 +10,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -63,11 +62,24 @@ public class WorldChordsRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
 
-        List<ItemLike> putridOres = List.of(ModBlocks.PUTRID_ORE_BLOCK.get());
+        List<ItemLike> murkyOres = List.of(ModBlocks.MURKY_ORE_BLOCK.get());
 
-        blastAndSmelt(putridOres, RecipeCategory.MISC, CookingBookCategory.BLOCKS, ModItems.PUTRID_INGOT.get(), 0.7F, 75, "test");
+        blastAndSmelt(murkyOres, RecipeCategory.MISC, CookingBookCategory.BLOCKS,
+                MaterialItems.get("murky", MaterialItemType.INGOT).get(), 0.7F, 75, "murky_ingot");
 
-        extraction(ModBlocks.SCULK_FLOWER.get(), 2, ModItems.MURKY_THREAD.get(), 2);
+        // every material smelts its dust into its ingot
+        for (var material : CraftingTools.MATERIALS) {
+            var dust = MaterialItems.get(material, MaterialItemType.DUST).get();
+            var ingot = MaterialItems.get(material, MaterialItemType.INGOT).get();
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), RecipeCategory.MISC, CookingBookCategory.MISC,
+                            new ItemStackTemplate(ingot), 0.7F, 200)
+                    .group(material.name() + "_ingot")
+                    .unlockedBy(getHasName(dust), this.has(dust))
+                    .save(this.output, WorldChords.MODID + ":" + material.name() + "_ingot_from_smelting_dust");
+        }
+
+        extraction(ModBlocks.SCULK_FLOWER.get(), 2, MaterialItems.get("murky", MaterialItemType.EXTRACT), 2);
+
 
     }
 

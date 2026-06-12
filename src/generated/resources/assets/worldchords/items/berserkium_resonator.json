@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "worldchords:item/resonator",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -3595711
+      }
+    ]
+  }
+}

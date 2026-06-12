@@ -4,6 +4,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 
 import li.gerard.worldchords.WorldChords;
 import li.gerard.worldchords.item.CraftingToolItem;
+import li.gerard.worldchords.item.MaterialItem;
 import li.gerard.worldchords.tier.Tier;
 import li.gerard.worldchords.tier.Tiered;
 
@@ -44,21 +45,40 @@ public final class TierTooltips {
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.worldchords.tier", tier.displayName())
+        Integer color = colorOf(item);
+        var tierName = tier.displayName();
+        if (color != null) {
+            tierName.withStyle(s -> s.withColor(color));
+        }
+        tooltip.add(Component.translatable("tooltip.worldchords.tier", tierName)
                 .withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
         // machines (tiered blocks) show their fixed transfer levels
         if (item instanceof BlockItem blockItem && blockItem.getBlock() instanceof Tiered) {
-            tooltip.add(valueLine("tooltip.worldchords.tier.rf_io", tier.rfTransfer(), tier));
-            tooltip.add(valueLine("tooltip.worldchords.tier.sf_io", tier.sfTransfer(), tier));
+            tooltip.add(valueLine("tooltip.worldchords.tier.rf_io", tier.rfTransfer(), color));
+            tooltip.add(valueLine("tooltip.worldchords.tier.sf_io", tier.sfTransfer(), color));
         }
         if (item instanceof CraftingToolItem tool) {
-            tooltip.add(valueLine("tooltip.worldchords.crafting_level", tool.getCraftingLevel(), tier));
+            tooltip.add(valueLine("tooltip.worldchords.crafting_level", tool.getCraftingLevel(), color));
         }
     }
 
-    private static Component valueLine(String key, int value, Tier tier) {
-        var coloredValue = Component.literal(String.valueOf(value)).withStyle(s -> s.withColor(tier.color()));
+    private static Component valueLine(String key, int value, @Nullable Integer color) {
+        var coloredValue = Component.literal(String.valueOf(value));
+        if (color != null) {
+            coloredValue.withStyle(s -> s.withColor(color));
+        }
         return Component.translatable(key, coloredValue).withStyle(ChatFormatting.GRAY);
+    }
+
+    /** The material color of the item, or null for things without a material (machines). */
+    private static @Nullable Integer colorOf(Item item) {
+        if (item instanceof CraftingToolItem tool) {
+            return tool.getMaterial().color();
+        }
+        if (item instanceof MaterialItem materialItem) {
+            return materialItem.getMaterial().color();
+        }
+        return null;
     }
 
     private static @Nullable Tier tierOf(Item item) {

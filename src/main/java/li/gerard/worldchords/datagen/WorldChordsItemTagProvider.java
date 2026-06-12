@@ -1,6 +1,8 @@
 package li.gerard.worldchords.datagen;
 
 import li.gerard.worldchords.WorldChords;
+import li.gerard.worldchords.item.MaterialItemType;
+import li.gerard.worldchords.item.MaterialItems;
 import li.gerard.worldchords.item.ModItems;
 
 import net.minecraft.core.HolderLookup;
@@ -17,6 +19,6 @@ public class WorldChordsItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ModItems.PUTRID_TOOL_MATERIALS).add(ModItems.PUTRID_INGOT.get());
+        tag(ModItems.PUTRID_TOOL_MATERIALS).add(MaterialItems.get("murky", MaterialItemType.INGOT).get());
     }
 }
