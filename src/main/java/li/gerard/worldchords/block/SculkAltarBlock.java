@@ -4,6 +4,7 @@ import com.lowdragmc.lowdraglib2.gui.factory.BlockUIMenuType;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.UI;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
+import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.inventory.InventorySlots;
 import com.lowdragmc.lowdraglib2.gui.ui.style.StylesheetManager;
@@ -39,6 +40,7 @@ public class SculkAltarBlock extends Block implements BlockUIMenuType.BlockUI, E
 
         var root = new UIElement();
         root.addChildren(new Label().setText("Sculk Altar Block"), new InventorySlots()).addClass("panel_bg");
+        root.addChildren(new Button());
         var ui = UI.of(root, StylesheetManager.ORE);
 
 
