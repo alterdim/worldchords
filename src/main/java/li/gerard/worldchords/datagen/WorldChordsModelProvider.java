@@ -100,8 +100,8 @@ public class WorldChordsModelProvider extends ModelProvider {
 
     /**
      * One shared flat model per material item type, tinted per material like the
-     * crafting tools: a single grayscale layer for overlay-less types, base+overlay
-     * otherwise. Texture names come from {@link MaterialItemType#texture()}.
+     * crafting tools , a single grayscale layer for overlay-less types or base + overlay
+     * Texture names come from {@link MaterialItemType#texture()}.
      */
     private static void createTintedMaterialItem(ItemModelGenerators itemModels, MaterialItemType type) {
         var model = Identifier.fromNamespaceAndPath(WorldChords.MODID, "item/" + type.id());
